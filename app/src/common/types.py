@@ -1,14 +1,33 @@
+from enum import Enum
+from typing import Union, Annotated
 from typing_extensions import TypedDict
+from langgraph.graph.message import add_messages
 
-class State(TypedDict):
-    foo: str
+from app.src.db.chat_db_handler import ChatDatabaseHandler
+
+
+class Sentiment(Enum):
+    POSITIVE = "Positive"
+    NEGATIVE = "Negative"
+    NEUTRAL = "Neutral"
+
+class GraphState(TypedDict):
+    query: str
+    db: ChatDatabaseHandler
+    chat_id: Union[str, None]
+    summary: str
+    sentiment: Sentiment
+    messages: Annotated[list, add_messages]
     
 class SearchGraphState(TypedDict):
-    bar: str
+    query: str
+    messages: Annotated[list, add_messages]
     
     
 class CrawlGraphState(TypedDict):
-    crawl: str
+    query: str
     
 class ReportGraphState(TypedDict):
-    report: str
+    query: str
+    
+    

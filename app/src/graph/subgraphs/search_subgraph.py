@@ -2,9 +2,10 @@ from langgraph.graph.state import StateGraph, START
 
 from app.src.common.types import SearchGraphState
 from app.src.graph.subgraphs.nodes import search_node
+from langchain_core.messages import  AIMessage
 
 
-class SerachGraph:
+class SearchGraph:
     search_graph = None
     
     def __init__(self):
@@ -24,7 +25,7 @@ class SerachGraph:
         """
         if self.search_graph is None:
             self.compile()
-        return self.search_graph.invoke({"bar": query})
+        return self.search_graph.invoke({"query": query})
         
         
     

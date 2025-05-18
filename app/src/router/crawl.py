@@ -14,4 +14,6 @@ def crawl(
 ):
     result =  main_graph.invoke(query, chat_id)
     
+#     print("Crawl result: ", result)
+    
     return {"query": query, "chat_id": chat_id, "result": result, "success": True}
