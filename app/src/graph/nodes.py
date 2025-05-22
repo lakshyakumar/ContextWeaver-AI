@@ -23,7 +23,7 @@ def init_node(state: GraphState):
     summary = ""
     sentiment = Sentiment.NEUTRAL
     if state["chat_id"] is not None: 
-        print(f"Chat ID: {state["chat_id"]} already exists")
+        print(f"Chat ID: {state['chat_id']} already exists")
         chat_id = state["chat_id"]
         chat = db.get_chat_by_id(chat_id)
         sentiment = chat.sentiment
