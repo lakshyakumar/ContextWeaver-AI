@@ -6,6 +6,7 @@ Contains all conditional functions used in graph edge decisions.
 from typing import Dict, Any
 
 def needs_web_search(state: Dict[str, Any]) -> bool:
+    # print("Checking if web search is needed...")
     """
     Check if the current state requires a web search.
     

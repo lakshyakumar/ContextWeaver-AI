@@ -37,7 +37,7 @@ def generate_system_prompt(ctx: RunContext[ChatNodeDependency]) -> str:
             Use these to personalize your current response.
 
             - **Dynamic Context Updates:**  
-            After answering each question:  
+            After answering each question or identifying it needs web search, update the summary and sentiment based on the new information.:  
             - Generate a **50 to 100 word updated summary** that combines the previous summary, current question, and your response included in the summary.
             - Derive and update the **sentiment** from this new summary.
 
