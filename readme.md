@@ -72,6 +72,10 @@ Ensure you have the following installed on your system:
 - Enhanced subgraph decision-making algorithms.
 - Support for additional AI models and APIs.
 
+## 🤝 Contributing
+
+We welcome contributions from everyone! Please read our [**Contributing Guide**](CONTRIBUTING.md) to get started. ✨
+
 ## License
 
 This project is licensed under the MIT License.
