@@ -2,7 +2,8 @@ from bson import ObjectId
 from langgraph.graph.state import StateGraph, START
 from app.src.common.types import GraphState
 from app.src.graph.nodes import init_node, invoke_search_graph, updation_node, chat_node
-from langchain_core.messages import  AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage
+from app.src.graph.utils.conditional_utils import needs_web_search
 
 
 class MainGraph:
@@ -22,12 +23,12 @@ class MainGraph:
         self.graph_builder.add_edge("init_node", "chat_node")
         self.graph_builder.add_conditional_edges(
             "chat_node",
-            lambda state: str(state["messages"][-1].content == "need_web_search"),
+            needs_web_search,
             {
                 "True": "search_node",
                 "False": "updation_node"
             }
-)        # self.graph_builder.add_edge("chat_node", "updation_node")
+        )
         self.graph_builder.add_edge("search_node", "updation_node")
         
     
