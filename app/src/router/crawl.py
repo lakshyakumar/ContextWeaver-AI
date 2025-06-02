@@ -12,8 +12,14 @@ def crawl(
      query: str = Query(..., description="What is your aidiate query?"),
      chat_id: str = Query(None, description="Optional chat ID for the conversation")
 ):
-    result =  main_graph.invoke(query, chat_id)
+    result = main_graph.invoke(query, chat_id)
     
-#     print("Crawl result: ", result)
+    # Get the chat_id from the result
+    response_chat_id = result.get("chat_id", chat_id)
     
-    return {"query": query, "chat_id": chat_id, "result": result, "success": True}
+    return {
+        "query": query,
+        "chat_id": response_chat_id,
+        "result": result,
+        "success": True
+    }
