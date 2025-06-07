@@ -50,19 +50,37 @@ Ensure you have the following installed on your system:
 
 ### Running the Application
 
-1. Start the FastAPI server:
+You can run the application using either of these two methods:
+
+#### Method 1: Using the Combined Script (Recommended)
+1. Run both the backend and frontend using the provided script:
    ```bash
-   uvicorn app.main:app --reload
+   ./run_app.sh
+   ```
+   This will start:
+   - FastAPI backend on `http://localhost:8000`
+   - Streamlit frontend on `http://localhost:8501`
+
+#### Method 2: Running Services Separately
+1. Start the FastAPI backend:
+   ```bash
+   uvicorn app.main:app --reload --port 8000
    ```
 
-2. Access the API documentation at:
+2. In a new terminal, start the Streamlit frontend:
+   ```bash
+   streamlit run app/frontend/streamlit_app.py --server.port 8501
    ```
-   http://127.0.0.1:8000/docs
-   ```
+
+### Accessing the Application
+
+- **Chat Interface**: Open your browser and visit `http://localhost:8501` to use the Streamlit chat interface
+- **API Documentation**: Access the API documentation at `http://localhost:8000/docs`
 
 ### Example Usage
 
-- Use the `query` endpoint to perform a web crawl and get detailed reports.
+- Use the Streamlit interface to chat with the AI and get responses.
+- Use the `query` endpoint to programmatically perform web crawls and get detailed reports.
 - Use the `project-details` endpoint to get project metadata.
 - Use the `health` endpoint to check the application's health.
 
